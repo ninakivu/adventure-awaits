@@ -6,9 +6,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
 
   <body>
+    <% if logged_in? %>
+      Signed in as: <%= current_user.name %>
+      <%= link_to('Logout', logout_path, method: 'delete') %>
+    <% else %>
+      <%= link_to('Log In', new_session_path) %>
+    <% end %>
+      
     <%= yield %>
   </body>
 </html>
