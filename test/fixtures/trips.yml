@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  destinations: MyString
+  map: MyString
+  participants: MyString
+  begin_date: 2018-01-09 10:59:42
+  duration: 1
+  activities: MyString
+  highlights: MyString
+  image: MyString
+  user: one
+
+two:
+  title: MyString
+  destinations: MyString
+  map: MyString
+  participants: MyString
+  begin_date: 2018-01-09 10:59:42
+  duration: 1
+  activities: MyString
+  highlights: MyString
+  image: MyString
+  user: two
