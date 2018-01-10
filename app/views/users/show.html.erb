@@ -5,13 +5,18 @@
 
 <h2>Trips:</h2>
 
+<%= link_to("New Trip", new_trip_path((@current_user))) %>
 <% @user.trips.each do |t| %>
   <div>
     <h3><%= t.title %></h3>
+    <h4><%= t.destinations %></h4>
+    <h4><%= t.duration %></h4>
+    
+    <%= link_to("Delete", trip_path(@user, t), method: "delete") %>
+
   </div>
 <% end %>
 
-<%= form_for @trip, url: user_tripss_path(@user) do |f| %>
-<% end %>
+<%= link_to('Edit', edit_user_path) %>
 
 <%= link_to('Users', users_path) %>

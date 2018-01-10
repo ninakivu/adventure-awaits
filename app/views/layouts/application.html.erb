@@ -10,13 +10,11 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      Signed in as: <%= current_user.name %>
-      <%= link_to('Logout', logout_path, method: 'delete') %>
-    <% else %>
-      <%= link_to('Log In', new_session_path) %>
-    <% end %>
-      
+    
+    <%= render 'partials/navbar' %>
+
+    <div class="container">
     <%= yield %>
+    </div>
   </body>
 </html>
