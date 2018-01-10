@@ -7,6 +7,9 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
+        <%= link_to("My Trips", trips_path, class: "nav-link") %>
+      </li>
+      <li class="nav-item">
         <%= link_to("Users", users_path, class: "nav-link") %>
       </li>
       <li class="nav-item">
@@ -15,6 +18,8 @@
       <li class="nav-item">
         <%= link_to("New Trip", new_trip_path, class: "nav-link") %>
       </li>
+    </ul>
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="form-inline my-2 my-lg-0">
         <% if logged_in? %>
           Signed in as: <%= current_user.name %>
@@ -23,8 +28,6 @@
           <%= link_to(' Log In', new_session_path) %>
         <% end %>
       </li>
-
-
     </ul>
   </div>
 </nav>
