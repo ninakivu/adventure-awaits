@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyString
+  by: MyString
+  trip: one
+
+two:
+  body: MyString
+  by: MyString
+  trip: two

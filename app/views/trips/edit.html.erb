@@ -1,2 +1,64 @@
-<h1>Trips#edit</h1>
-<p>Find me in app/views/trips/edit.html.erb</p>
+<%= form_for @trip, :html => {class: 'new_trip form-horizontal'} do |f| %>
+    <div class="row"><legend class="col-md-4 col-md-offset-4">Edit Trip:</legend></div>
+    <fieldset>
+        <div class="form-group">
+            <%= f.label :title, 'Title*', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.text_field :title, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.label :destinations, 'Destinations*', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.text_field :destinations, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.label :map, 'Map*', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.text_field :map, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.label :participants, 'Participants*', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.text_field :participants, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.label :begin_date, 'Begin date*', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.date_field :begin_date, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.label :duration, 'Duration (days)*', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.number_field :duration, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.label :activities, 'Activities*', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.text_field :activities, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.label :highlights, 'Highlights*', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.text_field :highlights, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.label :image, 'Image*', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.text_field :image, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+                <%= f.submit 'Save', class: 'btn btn-success' %>
+            </div>
+        </div>
+    </fieldset>
+<% end %>

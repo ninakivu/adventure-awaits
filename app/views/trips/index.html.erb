@@ -1,5 +1,5 @@
 <ul>
   <% @trips.each do |t| %>
-    <li><%= link_to(t.title, trip_path(t)) %></li>
+    <li><%= link_to(t.title, trip_path(t)) %>, by: <%= link_to(t.user.name, user_path(t.user)) %></li>
   <% end %>
 </ul>

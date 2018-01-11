@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'trips#index'
   resources :users
-  resources :trips
+  resources :trips do
+    resources :comments 
+  end
+
   
   resources :sessions, only: [:new, :create]
   delete '/logout' => 'sessions#destroy', as: :logout

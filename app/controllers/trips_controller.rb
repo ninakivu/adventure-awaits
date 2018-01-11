@@ -5,6 +5,8 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @comment = Comment.new
+    @comments = Comment.all
   end
 
   def new
@@ -26,7 +28,7 @@ class TripsController < ApplicationController
   end
 
   def update
-    @trip = Trip.find(params[:user_id])
+    @trip = Trip.find(params[:id])
     if @trip.update(trip_params)
       redirect_to trip_path(@trip)
     else 
@@ -36,7 +38,7 @@ class TripsController < ApplicationController
 
   def destroy
     @trip = Trip.find(params[:id])
-    @user = User.find(params[:user_id])
+    @user = current_user
     if @trip.destroy
       redirect_to user_path(@user)
     end 

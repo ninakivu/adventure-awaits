@@ -1,5 +1,54 @@
-<h1><%= @trip.title %></h1>
-<h2><%= @trip.duration %> days.</h2>
+<%# Trip show page %>
+<h2><%= @trip.title %></h2>
+<p>with <%= @trip.user.name %>
+<hr />
+
+<p>Duration: <%= @trip.duration %> days.</p>
+<p>Destinations: <%= @trip.destinations %></p>
+<p>Participants: <%= @trip.participants %></p>
+<p>Activities: <%= @trip.activities %></p>
+<p>Highlights: <%= @trip.highlights %></p>
+
+
 <%= image_tag(@trip.image) %>
 
+<p>Created <%= time_ago_in_words(@trip.created_at) %> ago</p>
 
+<%= link_to('Other Trips', trips_path) %>
+
+<% if @trip.user == current_user %>
+    <%= link_to("Edit", edit_trip_path(@trip)) %>
+    <%= link_to("Delete", trip_path(@trip), method: 'delete') %>
+<% end %>
+
+<hr />
+<% if current_user %>
+    <%= form_for @comment, url: trip_comments_path(@trip), :html => {class: 'new_comment form-horizontal'} do |f| %>
+        <div class="row"><legend class="col-md-4 col-md-offset-4">Add a Comment</legend></div>
+        <fieldset>
+            <div class="form-group">
+                <%= f.label :body, 'Comment', class: 'col-md-4 control-label' %>
+                <div class="col-md-5">
+                    <%= f.text_field :body, class: 'form-control' %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-8 col-md-offset-4">
+                    <%= f.submit 'Add Comment', class: 'btn btn-success' %>
+                </div>
+            </div>
+        </fieldset>
+    <% end %>
+<% end %>
+<h2>Comments (<%= @trip.comments.count %>): </h2>
+
+<% @trip.comments.each do |c| %>
+  <div>
+    <h3><%= c.body %></h3>
+    <p><%= c.user.name %></p>
+    <p> <%= time_ago_in_words(@trip.created_at) %> ago</p>
+    <% if @user == current_user %>
+        <%= link_to("Delete", trip_comment_path(@trip, c), method: "delete") %>
+    <% end %>
+  </div>
+<% end %>

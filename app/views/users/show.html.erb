@@ -1,22 +1,35 @@
+<%# User show page %>
 <h1><%= @user.name %></h1>
 <p><%= @user.nationality %></p>
+<p>Age: <%= @user.age %></p>
 
-<hr>
+
+<% if @user == current_user %>  
+  <%= link_to('Edit', edit_user_path) %>
+<% end %>
+<hr />
 
 <h2>Trips:</h2>
 
-<%= link_to("New Trip", new_trip_path((@current_user))) %>
+<%# Create a New Trip %>
+<% if @user == current_user %>  
+  <%= link_to("New Trip", new_trip_path((@current_user))) %>
+<% end %>
+
+
+
+<%# Show existing trips: %>
 <% @user.trips.each do |t| %>
   <div>
-    <h3><%= t.title %></h3>
-    <h4><%= t.destinations %></h4>
-    <h4><%= t.duration %></h4>
+    <h3><%= link_to(t.title, trip_path(t)) %></h3>
     
-    <%= link_to("Delete", trip_path(@user, t), method: "delete") %>
+    <% if @user == current_user %>  
+      <%= link_to("Edit", edit_trip_path(t)) %>
+      <%= link_to("Delete", trip_path(@user, t), method: "delete") %>
+    <% end %>
 
   </div>
 <% end %>
 
-<%= link_to('Edit', edit_user_path) %>
-
-<%= link_to('Users', users_path) %>
+<hr />
+<%= link_to('Go Back', users_path) %>
