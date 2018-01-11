@@ -3,14 +3,40 @@
 <p>with <%= @trip.user.name %>
 <hr />
 
-<p>Duration: <%= @trip.duration %> days.</p>
+<p>Duration: <%= @trip.duration %> days</p>
 <p>Destinations: <%= @trip.destinations %></p>
 <p>Participants: <%= @trip.participants %></p>
 <p>Activities: <%= @trip.activities %></p>
 <p>Highlights: <%= @trip.highlights %></p>
 
 
-<%= image_tag(@trip.image) %>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag @trip.image, class: "d-block w-100", alt: "First slide" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag @trip.image, class: "d-block w-100", alt: "Second slide" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag @trip.image, class: "d-block w-100", alt: "Third slide" %>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
 
 <p>Created <%= time_ago_in_words(@trip.created_at) %> ago</p>
 
@@ -47,7 +73,7 @@
     <h3><%= c.body %></h3>
     <p><%= c.user.name %></p>
     <p> <%= time_ago_in_words(@trip.created_at) %> ago</p>
-    <% if @user == current_user %>
+    <% if c.user == current_user %>
         <%= link_to("Delete", trip_comment_path(@trip, c), method: "delete") %>
     <% end %>
   </div>

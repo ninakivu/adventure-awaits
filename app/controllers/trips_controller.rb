@@ -1,6 +1,10 @@
 class TripsController < ApplicationController
   def index
-    @trips = Trip.all
+    if params[:mine] 
+      @trips = current_user.trips
+    else 
+      @trips = Trip.all
+    end 
   end
 
   def show
