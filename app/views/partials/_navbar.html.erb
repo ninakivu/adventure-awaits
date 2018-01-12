@@ -22,14 +22,18 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-      <li class="form-inline my-2 my-lg-0">
-        <% if logged_in? %>
+      <% if logged_in? %>
+        <li class="nav-item">
           Signed in as: <%= current_user.name %>
+        </li>
+        <li class="nav-item">
           <%= link_to(' Logout', logout_path, method: 'delete') %>
-        <% else %>
+        </li>
+      <% else %>
+        <li class="nav-item">
           <%= link_to(' Log In', new_session_path) %>
-        <% end %>
-      </li>
+        </li>
+      <% end %>
     </ul>
   </div>
 </nav>

@@ -11,10 +11,13 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @comment = Comment.new
     @comments = Comment.all
+    @invite = Invite.new
+    @image = Image.new
   end
 
   def new
     @trip = Trip.new
+    @trip.images.build
   end
 
   def create

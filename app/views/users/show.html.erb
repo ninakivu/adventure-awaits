@@ -1,8 +1,12 @@
-<%# User show page %>
+<% if flash[:success] %>  
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
 <h1><%= @user.name %></h1>
 <p><%= @user.nationality %></p>
 <p>Age: <%= @user.age %></p>
-
 
 <% if @user == current_user %>  
   <%= link_to('Edit', edit_user_path) %>
@@ -15,8 +19,6 @@
 <% if @user == current_user %>  
   <%= link_to("New Trip", new_trip_path((@current_user))) %>
 <% end %>
-
-
 
 <%# Show existing trips: %>
 <% @user.trips.each do |t| %>
