@@ -4,9 +4,13 @@
 
 <p>Duration: <%= @trip.duration %> days</p>
 <p>Destinations: <%= @trip.destinations %></p>
-<p>Participants: <%= @trip.participants %></p>
 <p>Activities: <%= @trip.activities %></p>
 <p>Highlights: <%= @trip.highlights %></p>
+<ul>Participants: 
+  <%= @trip.invites.where(accepted: true).each do |i| %>
+    <li><%= User.find(i.recipient_id).name %></li>
+  <% end %>
+</ul>
 
 <%= render 'partials/carousel' %>
 
@@ -18,9 +22,13 @@
   <%= link_to("Edit", edit_trip_path(@trip)) %>
   <%= link_to("Delete", trip_path(@trip), method: 'delete') %>
   <%= link_to("Add Image", new_trip_image_path(@trip)) %>
+  <%= link_to("Invite", new_trip_invite_path(@trip)) %>
+  
 <% end %>
 
 <hr />
+
+
 <%= render 'partials/comment_fields' %>
 <h3>Comments (<%= @trip.comments.count %>): </h3>
 

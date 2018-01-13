@@ -1,2 +1,12 @@
-<h1>Invites#index</h1>
-<p>Find me in app/views/invites/index.html.erb</p>
+<h1>Invites received:</h1>
+
+<ul>
+  <% current_user.invites_received.each do |i| %>
+    <li>
+      <%= i.trip.title %>
+      <%= link_to 'Accept Invite', accept_invite_path(i), method: 'patch' %>
+      <%= link_to 'Reject Invite', reject_invite_path(i), method: 'patch' %>
+    </li>
+  <% end %>
+</ul>
+

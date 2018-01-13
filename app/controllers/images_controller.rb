@@ -12,13 +12,13 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(image_params)
-    @image.user = current_user
+    @image.trip = Trip.find(params[:trip_id])
     if @image.save
       flash[:notice] = "Successfully added new photo!"
-      redirect_to trip_path(@trip)
+      redirect_to trip_path(@image.trip)
      else
       flash[:alert] = "Error adding new photo!"
-      redirect_to new_trip_images_path
+      redirect_to new_trip_image_path
      end 
   end
 

@@ -12,7 +12,6 @@ class TripsController < ApplicationController
     @comment = Comment.new
     @comments = Comment.all
     @invite = Invite.new
-    @image = Image.new
   end
 
   def new

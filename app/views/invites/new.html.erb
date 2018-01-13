@@ -1,15 +1,10 @@
-RSVP to Invitation for trip @trip.title
-<%= form_for @invite do |f| %>
-  <div class="custom-control custom-radio">
-    <input type="radio" id="customRadio1" name="customRadio1" class="custom-control-input">
-    <label class="custom-control-label" for="customRadio1"> YES </label>
+New Invitation To <%= @trip.title %>:
+<%= form_for [@trip, @invite] do |f| %>
+  <div class="form-group">
+    <label for="exampleSelect1">Add User</label>
+    <%= f.select(:recipient_id, User.all.collect {|u| [ u.name, u.id ] }) %>
   </div>
-  <div class="custom-control custom-radio custom-control-">
-    <input type="radio" id="customRadio2" name="customRadio1" class="custom-control-input">
-    <label class="custom-control-label" for="customRadio2"> NO </label>
-  </div>
-  <div class="custom-control custom-radio custom-control-">
-    <input type="radio" id="customRadio3" name="customRadio1" class="custom-control-input">
-    <label class="custom-control-label" for="customRadio3"> MAYBE </label>
+  <div class="form-group" "custom-control custom-radio">
+    <%= f.submit %>
   </div>
 <% end %>
