@@ -4,7 +4,13 @@
 
 <% if current_user %>
   <p><n>Duration: </n><%= @trip.duration %> days</p>
+  <p><n>Start Date: </n><%= @trip.begin_date.strftime("%F") %></n></p>
   <p><n>Destinations: </n><%= @trip.destinations %></n></p>
+  
+  <% if (@trip.map && @trip.map.length)>0 %>
+    <p><iframe width="500" height="300" frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDBvzq5WsidARhAZ0821MB1iAMTPnHiamI&q=<%= @trip.map%>" allowfullscreen></iframe></p>
+  <% end %>
   <p><n>Activities: </n><%= @trip.activities %></n></p>
   <p><n>Highlights: </n><%= @trip.highlights %></n></p>
   <ul><n>Participants: </n>
@@ -20,12 +26,13 @@
   <p>Created <%= time_ago_in_words(@trip.created_at) %> ago</p>
 
   <%= render 'partials/carousel' %>
+  <br/>
   <% else %>
     <h2>Log in to see more</h2>
     <%= link_to "Log in", new_session_path, class: 'btn btn-secondary' %>
 <% end %>
 
-
+<br/>
 
 <%= link_to('Other Trips', trips_path, class: 'btn btn-info')  %>
 
