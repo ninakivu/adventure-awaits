@@ -19,8 +19,9 @@ Adventure Awaits was build by using HTML, CSS, Ruby on Rails and Heroku.
 
 
 ### MVP:
-- user and trip model
 - user has many trips
+- trip has many invites
+- user has many invites
 - login/sign up functionality with authentication
 - restricted access for editing a trip and deleting, seeing user's details
 - complete RESTful routes for users
