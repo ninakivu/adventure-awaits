@@ -2,29 +2,34 @@
 <p>with <%= @trip.user.name %>
 <hr />
 
-<p><n>Duration: </n><%= @trip.duration %> days</p>
-<p><n>Destinations: </n><%= @trip.destinations %></n></p>
-<p><n>Activities: </n><%= @trip.activities %></n></p>
-<p><n>Highlights: </n><%= @trip.highlights %></n></p>
-<ul><n>Participants: </n>
-  <% @trip.invites.where(accepted: true).each do |i| %>
-    <li><%= i.recipient.name %></li>
-  <% end %>
-</ul>
-<ul><n>Invited: </n>
-  <% @trip.invites.each do |i| %>
-    <li><%= i.recipient.name %><%=" ✅" if i.accepted %>  </li>
-  <% end %>
-</ul>
+<% if current_user %>
+  <p><n>Duration: </n><%= @trip.duration %> days</p>
+  <p><n>Destinations: </n><%= @trip.destinations %></n></p>
+  <p><n>Activities: </n><%= @trip.activities %></n></p>
+  <p><n>Highlights: </n><%= @trip.highlights %></n></p>
+  <ul><n>Participants: </n>
+    <% @trip.invites.where(accepted: true).each do |i| %>
+      <li><%= i.recipient.name %></li>
+    <% end %>
+  </ul>
+  <ul><n>Invited: </n>
+    <% @trip.invites.each do |i| %>
+      <li><%= i.recipient.name %><%=" ✅" if i.accepted %>  </li>
+    <% end %>
+  </ul>
+  <p>Created <%= time_ago_in_words(@trip.created_at) %> ago</p>
 
-<%= render 'partials/carousel' %>
+  <%= render 'partials/carousel' %>
+  <% else %>
+    <h2>Log in to see more</h2>
+    <%= link_to "Log in", new_session_path, class: 'btn btn-secondary' %>
+<% end %>
 
-<p>Created <%= time_ago_in_words(@trip.created_at) %> ago</p>
+
 
 <%= link_to('Other Trips', trips_path, class: 'btn btn-info')  %>
 
 <% if @trip.user == current_user %>
-
 
   <%= link_to("Edit", edit_trip_path(@trip), class: 'btn btn-info') %>
   <%= link_to("Delete", trip_path(@trip), class: 'btn btn-dark', method: 'delete') %>
@@ -41,7 +46,7 @@
 
 <% @trip.comments.each do |c| %>
   <div>
-    <h4><%= c.body %></h4>
+    <h6><%= c.body %></h6>
     <p><%= c.user.name %></p>
     <p> <%= time_ago_in_words(@trip.created_at) %> ago</p>
     <% if c.user == current_user %>
