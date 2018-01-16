@@ -2,12 +2,12 @@
 <p>with <%= @trip.user.name %>
 <hr />
 
-<p>Duration: <%= @trip.duration %> days</p>
-<p>Destinations: <%= @trip.destinations %></p>
-<p>Activities: <%= @trip.activities %></p>
-<p>Highlights: <%= @trip.highlights %></p>
-<ul>Participants: 
-  <%= @trip.invites.where(accepted: true).each do |i| %>
+<p><n>Duration: </n><%= @trip.duration %> days</p>
+<p><n>Destinations: </n><%= @trip.destinations %></n></p>
+<p><n>Activities: </n><%= @trip.activities %></n></p>
+<p><n>Highlights: </n><%= @trip.highlights %></n></p>
+<ul><n>Participants: </n>
+  <% @trip.invites.where(accepted: true).each do |i| %>
     <li><%= User.find(i.recipient_id).name %></li>
   <% end %>
 </ul>
@@ -16,13 +16,13 @@
 
 <p>Created <%= time_ago_in_words(@trip.created_at) %> ago</p>
 
-<%= link_to('Other Trips', trips_path) %>
+<%= link_to('Other Trips', trips_path, class: 'btn btn-info')  %>
 
 <% if @trip.user == current_user %>
-  <%= link_to("Edit", edit_trip_path(@trip)) %>
-  <%= link_to("Delete", trip_path(@trip), method: 'delete') %>
-  <%= link_to("Add Image", new_trip_image_path(@trip)) %>
-  <%= link_to("Invite", new_trip_invite_path(@trip)) %>
+  <%= link_to("Edit", edit_trip_path(@trip), class: 'btn btn-info') %>
+  <%= link_to("Delete", trip_path(@trip), class: 'btn btn-dark', method: 'delete') %>
+  <%= link_to("Add Image", new_trip_image_path(@trip), class: 'btn btn-info') %>
+  <%= link_to("Invite", new_trip_invite_path(@trip), class: 'btn btn-info') %>
   
 <% end %>
 
