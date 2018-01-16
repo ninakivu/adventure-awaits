@@ -1,2 +1,9 @@
-<h1>Invites#edit</h1>
-<p>Find me in app/views/invites/edit.html.erb</p>
+<h1>Edit Invites</h1>
+
+  <ul>
+    <% @trip.invites.each do |i| %>
+      <li><%= User.find(i.recipient_id).name %>
+      </li>
+    <% end %>
+
+  </ul>

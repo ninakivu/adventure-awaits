@@ -1,4 +1,4 @@
-<h2><%= @trip.title %></h2>
+<h1><%= @trip.title %></h1>
 <p>with <%= @trip.user.name %>
 <hr />
 
@@ -8,7 +8,12 @@
 <p><n>Highlights: </n><%= @trip.highlights %></n></p>
 <ul><n>Participants: </n>
   <% @trip.invites.where(accepted: true).each do |i| %>
-    <li><%= User.find(i.recipient_id).name %></li>
+    <li><%= i.recipient.name %></li>
+  <% end %>
+</ul>
+<ul><n>Invited: </n>
+  <% @trip.invites.each do |i| %>
+    <li><%= i.recipient.name %><%=" ✅" if i.accepted %>  </li>
   <% end %>
 </ul>
 
@@ -19,6 +24,8 @@
 <%= link_to('Other Trips', trips_path, class: 'btn btn-info')  %>
 
 <% if @trip.user == current_user %>
+
+
   <%= link_to("Edit", edit_trip_path(@trip), class: 'btn btn-info') %>
   <%= link_to("Delete", trip_path(@trip), class: 'btn btn-dark', method: 'delete') %>
   <%= link_to("Add Image", new_trip_image_path(@trip), class: 'btn btn-info') %>

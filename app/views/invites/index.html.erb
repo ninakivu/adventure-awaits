@@ -3,10 +3,11 @@
 
   <ul>
     <% current_user.invites_received.each do |i| %>
-      <li>
+      <li class="invite-item" >
         <%= i.trip.title %>
-        <%= link_to 'Accept Invite', accept_invite_path(i), class: 'btn btn-info', method: 'patch' %>
-        <%= link_to 'Reject Invite', reject_invite_path(i), class: 'btn btn-dark', method: 'patch' %>
+        <%= link_to 'Accept Invite', accept_invite_path(i), class: 'btn btn-info', method: 'patch' unless i.accepted %>
+        <% if i.accepted %>(Accepted) <%= link_to 'Reject Invite', reject_invite_path(i), class: 'btn btn-dark', method: 'patch'%>
+        <% end %>
       </li>
     <% end %>
   </ul>

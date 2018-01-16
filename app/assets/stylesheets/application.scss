@@ -9,14 +9,18 @@ body {
   color: black
 };
 
-a {
-  color: #0099CC
+a, h1 {
+  color:#17a2b8
 };
 
 a:hover { 
-  color: #0099CC;
-}
+  color:#17a2b8;
+};
 
 n {
   font-weight: bold;
 };
+
+.invite-item {
+  margin-bottom: 4px;
+}

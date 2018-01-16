@@ -1,10 +1,10 @@
-<%= form_for [@trip, @image] do |f| %>
+<%= form_for [@trip, @image], :html => {class: 'new_image form-horizontal'} do |f| %>
   <div class="form-group">
-    <%= f.label :url, "Image Url" %>
-    <%= f.text_field :url %>
+    <%= f.label :url, "Image Url", class: 'col-md-4 control-label' %>
+    <%= f.text_field :url, class: 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= f.submit %>
+  <div class="form-group col-md-offset-4" >
+    <%= f.submit 'Add Image', class: 'btn btn-info' %>
   </div>
     
 <% end %>
