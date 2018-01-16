@@ -15,19 +15,16 @@ Start using Adventure Awaits app [HERE](https://adventure-awaits.herokuapp.com/)
 ---
 
 ### Development & Technologies:
-Adventure Awaits was build by using HTML, CSS, Ruby on Rails and Heroku.
+Adventure Awaits was build by using HTML, CSS, Ruby on Rails and Bootstrap.
 
 
 ### MVP:
-- user has many trips
-- user has many invites
-- trip has many invites
-- trip has many pictures
-- trip has many comments
-- login/sign up functionality with authentication
-- restricted access for editing a trip and deleting it
+- user can create many trips
+- user can see a list of trips
+- user can comment under a trip
+- user can login/sign up with email
+- only the user who created the trip can edit and delete it
 - only signed in users can see other user's details
-- complete RESTful routes for users
 
 
 ### Dream Features:
